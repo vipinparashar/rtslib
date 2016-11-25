@@ -19,6 +19,7 @@ under the License.
 
 import re
 import os
+import sys
 import stat
 import uuid
 import glob
@@ -619,7 +620,7 @@ def list_eth_names(max_eth=1024):
     struct.
     '''
     SIOCGIFCONF = 0x8912
-    if os.uname()[4].endswith("_64"):
+    if sys.maxsize > 2**32:
         offset = 40
     else:
         offset = 32
